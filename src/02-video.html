@@ -21,6 +21,18 @@
     ></iframe>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      var iframe = document.querySelector('iframe');
+      var player = new Vimeo.Player(iframe);
+
+      player.on('timeupdate', function (event) {
+        console.log(event.seconds);
+      });
+
+      player.getVideoTitle().then(function (title) {
+        console.log('title:', title);
+      });
+    </script>
     <script src="js/02-video.js"></script>
   </body>
 </html>
