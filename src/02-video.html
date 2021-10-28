@@ -25,13 +25,19 @@
       var iframe = document.querySelector('iframe');
       var player = new Vimeo.Player(iframe);
 
-      player.on('timeupdate', function (event) {
-        console.log(event.seconds);
-      });
+      function videoCurrentTime(event) {
+        const seconds = event;
+        console.log(event);
+        const settings = {
+          seconds: `${event.seconds}`,
+          percent: `${event.percent}`,
+          duration: `${event.duration}`,
+        };
 
-      player.getVideoTitle().then(function (title) {
-        console.log('title:', title);
-      });
+        localStorage.setItem('videoplayer-current-time', JSON.stringify(settings));
+      }
+
+      player.on('timeupdate', videoCurrentTime);
     </script>
     <script src="js/02-video.js"></script>
   </body>
