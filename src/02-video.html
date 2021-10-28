@@ -26,7 +26,6 @@
       var player = new Vimeo.Player(iframe);
 
       function videoCurrentTime(event) {
-        const seconds = event;
         console.log(event);
         const settings = {
           seconds: `${event.seconds}`,
