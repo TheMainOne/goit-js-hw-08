@@ -37,6 +37,21 @@
       }
 
       player.on('timeupdate', videoCurrentTime);
+
+      player
+        .setCurrentTime(50.456)
+        .then(function (seconds) {
+          // seconds = the actual time that the player seeked to
+        })
+        .catch(function (error) {
+          switch (error.name) {
+            case 'RangeError':
+              break;
+
+            default:
+              break;
+          }
+        });
     </script>
     <script src="js/02-video.js"></script>
   </body>
