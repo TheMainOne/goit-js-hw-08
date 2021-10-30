@@ -24,6 +24,7 @@
     <script>
       var iframe = document.querySelector('iframe');
       var player = new Vimeo.Player(iframe);
+      const timeValue = JSON.parse(localStorage.getItem('videoplayer-current-time'));
 
       function videoCurrentTime(event) {
         console.log(event);
@@ -37,13 +38,8 @@
       }
 
       player.on('timeupdate', videoCurrentTime);
-
-      player
-        .setCurrentTime(50.456)
-        .then(function (seconds) {
-          // seconds = the actual time that the player seeked to
-        })
-        .catch(function (error) {
+      if (timeValue) {
+        player.setCurrentTime(timeValue.seconds).catch(function (error) {
           switch (error.name) {
             case 'RangeError':
               break;
@@ -52,6 +48,7 @@
               break;
           }
         });
+      }
     </script>
     <script src="js/02-video.js"></script>
   </body>
