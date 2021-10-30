@@ -1,15 +1,29 @@
 var throttle = require('lodash.throttle');
 
 const form = document.querySelector('.feedback-form');
-console.log(form.elements);
+const input = document.querySelector('.feedback-form input');
+const textArea = document.querySelector('.feedback-form textarea');
+const dataForStorage = {
+    email: '',
+    text:'',
+};
 
 form.addEventListener('input', (event) => {
     event.preventDefault();
-    const formData = new FormData(form);
-    const DataForStorage = {
-        email: "",
-        text: '',
+
+console.log(event.target.value);
+
+    if (event.target.name === 'email') {
+        dataForStorage.email = event.target.value;
+    } else {
+        dataForStorage.text = event.target.value
     }
-    // formData.forEach((email) => console.log(email))
-    console.log(event.elements)
+
+    localStorage.setItem('feedback-form-state', JSON.stringify(dataForStorage));
 });
+
+if (localStorage.getItem('feedback-form-state')) {
+    const dataForOutput = JSON.parse(localStorage.getItem('feedback-form-state'));
+    textArea.textContent = dataForOutput.text;
+    input.value = dataForOutput.email;
+}
