@@ -1,15 +1,13 @@
 var throttle = require('lodash.throttle');
-
 const form = document.querySelector('.feedback-form');
-const input = document.querySelector('.feedback-form input');
-const textArea = document.querySelector('.feedback-form textarea');
+
 let dataForStorage = {};
 
 if (localStorage.getItem('feedback-form-state')) {
   dataForStorage = JSON.parse(localStorage.getItem('feedback-form-state'));
 
-  for (let i in dataForStorage) {
-      form[i].value = dataForStorage[i];
+  for (let key in dataForStorage) {
+      form[key].value = dataForStorage[key];
   }
 }
 
