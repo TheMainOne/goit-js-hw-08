@@ -12,10 +12,8 @@ form.addEventListener('submit', () => {
     localStorage.removeItem('feedback-form-state');
 });
 
-form.addEventListener('input', (event) => {
+form.addEventListener('input', throttle((event) => {
     event.preventDefault();
-
-console.log(event.target.value);
 
     if (event.target.name === 'email') {
         dataForStorage.email = event.target.value;
@@ -24,7 +22,8 @@ console.log(event.target.value);
     }
 
     localStorage.setItem('feedback-form-state', JSON.stringify(dataForStorage));
-});
+}, 500));
+
 
 if (localStorage.getItem('feedback-form-state')) {
     const dataForOutput = JSON.parse(localStorage.getItem('feedback-form-state'));
