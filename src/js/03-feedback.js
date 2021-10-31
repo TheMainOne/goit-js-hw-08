@@ -8,6 +8,10 @@ const dataForStorage = {
     text:'',
 };
 
+form.addEventListener('submit', () => {
+    localStorage.removeItem('feedback-form-state');
+});
+
 form.addEventListener('input', (event) => {
     event.preventDefault();
 
