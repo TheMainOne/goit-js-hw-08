@@ -7,7 +7,7 @@ if (localStorage.getItem('feedback-form-state')) {
   dataForStorage = JSON.parse(localStorage.getItem('feedback-form-state'));
 
   for (let key in dataForStorage) {
-      form[key].value = dataForStorage[key];
+    form[key].value = dataForStorage[key];
   }
 }
 
@@ -16,13 +16,13 @@ form.addEventListener('submit', onFormSubmit);
 
 function onFormInput() {
   const formData = new FormData(form);
-    
-    formData.forEach((a, b) => (dataForStorage[b] = a));
-    localStorage.setItem('feedback-form-state', JSON.stringify(dataForStorage));
+
+  formData.forEach((a, b) => (dataForStorage[b] = a));
+  localStorage.setItem('feedback-form-state', JSON.stringify(dataForStorage));
 }
 
 function onFormSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
   form.reset();
 
   console.log(dataForStorage);
