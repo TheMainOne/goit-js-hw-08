@@ -9,8 +9,6 @@ function videoCurrentTime(event) {
   console.log(event);
   const settings = {
     seconds: `${event.seconds}`,
-    percent: `${event.percent}`,
-    duration: `${event.duration}`,
   };
 
   localStorage.setItem('videoplayer-current-time', JSON.stringify(settings));
