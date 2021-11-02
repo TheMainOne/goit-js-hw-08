@@ -6,12 +6,12 @@ var player = new Vimeo.Player(iframe);
 const currentTimeValue = JSON.parse(localStorage.getItem('videoplayer-current-time'));
 
 function videoCurrentTime(event) {
-  console.log(event);
   const settings = {
     seconds: `${event.seconds}`,
   };
 
   localStorage.setItem('videoplayer-current-time', JSON.stringify(settings));
+  console.log(event.seconds);
 }
 
 if (currentTimeValue) {
